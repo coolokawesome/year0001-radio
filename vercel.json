@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "build/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/api/:path*",
+        "destination": "/server/index.js"
+      },
+      {
+        "source": "/:path*",
+        "destination": "/build/:path*"
+      }
+    ]
+  }
+  
