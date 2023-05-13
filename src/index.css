@@ -1,13 +1,213 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'mono';
+  src: url('./fonts/Akkurat-Mono.OTF');
+}
+@font-face {
+  font-family: 'din';
+  src: url('./fonts/din-regular.ttf');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #FFFFFF;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' viewBox='0 0 100 100'%3E%3Crect x='0' y='0' width='8' height='8' fill-opacity='0.29' fill='%23000000'/%3E%3C/svg%3E");
+  margin: 0;
+  font-weight: 100 !important;
+  text-transform: uppercase !important;
+  animation: fadeInAnimation ease 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+      
+   }
+}
+
+h1 {
+  font-family: 'mono';
+  color: rgb(73, 71, 82);
+  text-align: center;
+  font-weight: 100;
+  margin-bottom: 3rem;
+}
+a {
+  font-weight: 100;
+  color: grey;
+  font-family: 'din';
+}
+.logo {
+  width: 50px
+}
+.song-info-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.song-img {
+  width: 30vw;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.624);
+  border-radius: 50%;
+  animation-name: rotate;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transition-duration: 0.3s;
+
+}
+
+.song-img:hover {
+  transition-duration: 0.3s;
+  border: 1px solid #000000fe;
+}
+.song-title {
+  font-family: 'din';
+  color: rgb(0, 0, 0);
+  font-weight: 100;
+}
+.song-artist {
+  font-family: 'din';
+  color: rgb(0, 0, 0);
+  font-weight: 100;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes blink-animation {
+  0%, 100% {
+    opacity: 0;
+  }
+  29% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  79% {
+    opacity: 1;
+  }
+}
+.audio-player-container {
+  display: flex;
+  justify-content: center;
+  border: 0px !important
+}
+.audio-player {
+  width: 80vw;
+}
+.rhap_container {
+  background-color: #ffffff25 !important;
+  box-shadow: none !important;
+}
+.rhap_time {
+  color: white !important
+}
+.rhap_progress-filled {
+  background-color: rgb(44, 44, 44) !important;
+}
+.rhap_progress-indicator {
+  background-color: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(159, 159, 159)
+}
+.rhap_progress-indicator:active {
+  transition-duration: 0.2s;
+  background-color: rgb(80, 80, 80) !important;
+}
+footer  {
+  text-align: center ;
+
+}
+
+a:visited {
+  color: rgb(96, 96, 96) !important
+}
+.footer-link {
+  position: relative;
+  text-decoration: none;
+  font-size: x-small;
+} 
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: black;
+  transition: width 0.3s ease-in-out;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+.app-header {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+  display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+@media screen and (min-width: 1500px) {
+
+  .song-img {
+    width: 15vw ;
+  }
+  .audio-player {
+    width: 40vw;
+  }
+  .app-header {
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 0.5rem;
+  }
+}
+@media screen and (min-width: 899px) {
+
+  .app-header {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 0.5rem;
+  }
+  .song-img {
+    width: 20vw ;
+  }
+  .audio-player {
+    width: 50vw;
+  }
+}
+.media-controls-outer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20vh
+}
+.audio-button {
+  border: 0px;
+  background-color: rgba(255, 255, 255, 0);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.audio-button:hover {
+  cursor: pointer;
+}
+.audio-button:active {
+  transform: translateY(2px);
+}
+.song-info-container-inner {
+  min-height: 40vh
+}
+.rhap_time {
+  color: rgb(40, 42, 46) !important;
+  font-family: 'din';
+  font-weight: 100;
 }
