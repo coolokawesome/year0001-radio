@@ -6,13 +6,12 @@ const app = express();
 // Allow cross-origin resource sharing (CORS)
 app.use(cors());
 
-// Serve static files from the public directory
-app.use(express.static("songs"));
-
+// Serve static files from the songs directory
+app.use(express.static(path.join(__dirname, "songs")));
 
 // Route for retrieving song data
 app.get("/api/songs", (req, res) => {
-    const songs = [
+  const songs = [
         {
           title: "vive la france",
           artist: "Aamu Kuu",
@@ -145,19 +144,19 @@ app.get("/api/songs", (req, res) => {
         }
       ];
 
-  res.json(songs);
-});
-
-// Route for serving audio files
-app.get("/songs/:song", (req, res) => {
-  const song = req.params.song;
-  const filePath = path.join(__dirname, "songs", song);
-
-  res.sendFile(filePath);
-});
-
-// Start the server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+      res.json(songs);
+    });
+    
+    // Route for serving audio files
+    app.get("/songs/:song", (req, res) => {
+      const song = req.params.song;
+      const filePath = path.join(__dirname, "songs", song);
+    
+      res.sendFile(filePath);
+    });
+    
+    // Start the server
+    const PORT = process.env.PORT || 3001;
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
+    });

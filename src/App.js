@@ -36,7 +36,7 @@ function App() {
   }, [index, sentence]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/songs")
+    axios.get("/api/songs")
       .then((response) => {
         setSongs(response.data);
         console.log(response.data);
