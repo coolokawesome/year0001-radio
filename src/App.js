@@ -102,7 +102,7 @@ function App() {
           <img className="logo a-link" src={logo}></img>
         </div>
         <div className="header-right">
-          <a href='https://github.com' target="_blank" className="footer-link a-link">REPO</a>
+          <a href='https://github.com/coolokawesome/phonkradio' target="_blank" className="footer-link a-link">REPO</a>
         </div>
       </header>
       {
@@ -165,7 +165,7 @@ function App() {
         </div>
       </main>
       <footer>
-        <a target="_blank" className='a-link footer-link' href='https://google.com'>COOLOKAWESOME</a>
+        <a target="_blank" className='a-link footer-link' href='https://syrussamson.ca'>COOLOKAWESOME</a>
       </footer>
     </div>
   );
