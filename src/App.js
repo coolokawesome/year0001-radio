@@ -138,7 +138,7 @@ function App() {
             autoPlay={false}
             ref={audioRef}
             src={currentSong.audio}
-            customControlsSection={["VOLUME_CONTROLS"]}
+            // customControlsSection={["VOLUME_CONTROLS"]}
             onPlay={handlePlay}
             onPause={handlePause}
             showJumpControls={true}
