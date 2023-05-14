@@ -7,6 +7,7 @@ import Play from './imgs/icons/play.png'
 import Pause from './imgs/icons/pause.png'
 import Next from './imgs/icons/next.png'
 import Back from './imgs/icons/back.png'
+import songList from "./songObjects";
 
 function App() {
   const sentence = "YEAR0001 RADIO";
@@ -16,6 +17,10 @@ function App() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [songs, setSongs] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+ 
+  
+
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -36,26 +41,19 @@ function App() {
   }, [index, sentence]);
 
   useEffect(() => {
-    axios.get("/api/songs")
-      .then((response) => {
-        setSongs(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => console.error("err", error));
+    const loadSongs = () => {
+        songList.forEach((song, index) => {
+          const audioUrl = require(`${song.audio}`);
+          const updatedSong = { ...song, audio: audioUrl };
+          setSongs((prevSongs) => [...prevSongs, updatedSong]);
+        });
+    };;
+  
+    loadSongs();
   }, []);
 
-  const audioRef = useRef(null);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.audio.current.addEventListener("ended", handleSongEnd);
-    }
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.audio.current.removeEventListener("ended", handleSongEnd);
-      }
-    };
-  }, [currentSongIndex]);
+
 
   const handleSongEnd = () => {
     if (currentSongIndex + 1 < songs.length) {
@@ -126,7 +124,9 @@ function App() {
         </h1>
       <div className="song-info-container">
         <div className="song-info-container-inner">
-          <img className="song-img" src={currentSong.img} alt="Song Cover" />
+          <img className={
+            isPlaying == true ? "song-img song-play" : "song-img"
+          } src={currentSong.img} alt="Song Cover" />
           <h2 className="song-title">{currentSong.title}</h2>
           <h3 className="song-artist">{currentSong.artist}</h3>
         </div>
@@ -135,6 +135,7 @@ function App() {
       <main className="audio-player-container">
         <div className="audio-player">
           <AudioPlayer
+            autoPlay={false}
             ref={audioRef}
             src={currentSong.audio}
             customControlsSection={["VOLUME_CONTROLS"]}
@@ -164,7 +165,7 @@ function App() {
         </div>
       </main>
       <footer>
-        <a target="_blank" class='a-link footer-link' href='https://google.com'>COOLOKAWESOME</a>
+        <a target="_blank" className='a-link footer-link' href='https://google.com'>COOLOKAWESOME</a>
       </footer>
     </div>
   );

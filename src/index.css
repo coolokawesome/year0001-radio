@@ -52,14 +52,14 @@ a {
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.624);
   border-radius: 50%;
+}
+.song-play {
   animation-name: rotate;
   animation-duration: 20s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   transition-duration: 0.3s;
-
 }
-
 .song-img:hover {
   transition-duration: 0.3s;
   border: 1px solid #000000fe;
