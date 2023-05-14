@@ -172,18 +172,20 @@ a:visited {
     margin-top: 0.5rem;
   }
 }
-@media screen and (min-width: 899px) {
+@media screen and (max-width: 845px) {
 
   .app-header {
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
     margin-top: 0.5rem;
   }
   .song-img {
-    width: 20vw ;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    width: 40vw;
   }
   .audio-player {
-    width: 50vw;
+    width: 90vw;
   }
 }
 .media-controls-outer {
